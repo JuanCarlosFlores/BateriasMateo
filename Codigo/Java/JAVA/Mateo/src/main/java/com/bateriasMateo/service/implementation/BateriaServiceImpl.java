@@ -1,5 +1,8 @@
 package com.bateriasMateo.service.implementation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,14 @@ public class BateriaServiceImpl implements BateriaService {
 	@Override
 	public Bateria get(Long pId) {		
 		return bateriaRepository.findOne(pId);
+	}
+
+	@Override
+	public List<Bateria> getAll() {	
+		Iterable <Bateria> source = bateriaRepository.findAll();
+		List<Bateria> target = new ArrayList<>();
+		source.forEach(target::add);
+		return target;
 	}
 
 }

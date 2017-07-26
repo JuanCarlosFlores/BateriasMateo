@@ -31,25 +31,44 @@ public class BateriaController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/baterias/{id}")
+	@RequestMapping(value = "/baterias", method = RequestMethod.GET )
+	public String list(Model model){
+		model.addAttribute("baterias", bateriaService.getAll());	
+		return "bateria/bateriasList";
+	}
+	
+	@RequestMapping(value = "/bateria/{id}")
 	public String baterias(Model model, @PathVariable Long id ) {
 		model.addAttribute("bateria", bateriaService.get(id));
 		return "bateria/bateria";
 	}
-	@RequestMapping(value="/baterias/new")
+	@RequestMapping(value="/bateria/new")
 	public String newBateriaView(Model model){
 		model.addAttribute("bateria", new Bateria());
 	return "bateria/bateria";	
 	}
-	@RequestMapping(value="/baterias", method= RequestMethod.POST)
+	@RequestMapping(value="/bateria", method= RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("bateria") Bateria bateria, BindingResult bindingResult, Model model){
 		if ((bindingResult.hasErrors())) {
 			model.addAttribute("bateria", bateria);			
-			return "bateria/bateria";
+			return "bateria/newBateriaOK";
 		}else{
 			bateriaService.save(bateria);
-			return "redirect:bateria/bateria";
+			return "bateria/newBateriaOK";
 		}
+	}
+	@RequestMapping(value="/bateria/edit/{id}")
+	public String updateUsuarioView(Model model, @PathVariable Long id){
+		Bateria bateria = bateriaService.get(id);
+		model.addAttribute("bateria", bateria);
+		return "bateria/bateria";		
+	}
+	
+	@RequestMapping(value="baterias/delete/{id}")
+	public String delete(Model model, @PathVariable Long id){
+		Bateria bateria = bateriaService.get(id);
+		bateriaService.delete(bateria);
+		return "redirect:/baterias";
 	}
 	
 }
