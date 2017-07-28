@@ -47,14 +47,14 @@ public class BateriaController {
 		model.addAttribute("bateria", new Bateria());
 	return "bateria/bateria";	
 	}
-	@RequestMapping(value="/bateria", method= RequestMethod.POST)
+	@RequestMapping(value="/baterias", method= RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("bateria") Bateria bateria, BindingResult bindingResult, Model model){
 		if ((bindingResult.hasErrors())) {
 			model.addAttribute("bateria", bateria);			
 			return "bateria/newBateriaOK";
 		}else{
 			bateriaService.save(bateria);
-			return "bateria/newBateriaOK";
+			return "redirect:baterias";
 		}
 	}
 	@RequestMapping(value="/bateria/edit/{id}")
@@ -64,7 +64,7 @@ public class BateriaController {
 		return "bateria/bateria";		
 	}
 	
-	@RequestMapping(value="baterias/delete/{id}")
+	@RequestMapping(value="bateria/delete/{id}")
 	public String delete(Model model, @PathVariable Long id){
 		Bateria bateria = bateriaService.get(id);
 		bateriaService.delete(bateria);
