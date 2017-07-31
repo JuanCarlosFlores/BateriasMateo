@@ -58,9 +58,9 @@ public class BateriaController {
 		}
 	}
 	@RequestMapping(value="/bateria/edit/{id}")
-	public String updateUsuarioView(Model model, @PathVariable Long id){
+	public String updateBateriaView(Model model, @PathVariable Long id){
 		Bateria bateria = bateriaService.get(id);
-		model.addAttribute("bateria", bateria);
+		model.addAttribute("bateria", bateria);	
 		return "bateria/bateria";		
 	}
 	
