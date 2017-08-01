@@ -1,5 +1,6 @@
 package com.bateriasMateo.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MATERIA_PRIMA")
+@Table(name = "materia_prima")
 public class MateriaPrima {
 	
 	@Id
@@ -17,6 +18,8 @@ public class MateriaPrima {
 	private String nombre;
 	private String detalle;
 	private int cantidad;
+	
+	@Column(name="valor_minimo")
 	private int valorMinimo;
 	
 	

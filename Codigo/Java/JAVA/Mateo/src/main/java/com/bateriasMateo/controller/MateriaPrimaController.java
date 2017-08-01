@@ -26,7 +26,7 @@ public class MateriaPrimaController {
 	
 	@RequestMapping(value = "/MateriasPrima", method = RequestMethod.GET )
 	public String list(Model model){
-		model.addAttribute("materiaPrima", MateriaPrimaService.getAll());	
+		model.addAttribute("materiasPrima", MateriaPrimaService.getAll());	
 		return "MateriaPrima/MateriaPrimaList";
 	}
 	
