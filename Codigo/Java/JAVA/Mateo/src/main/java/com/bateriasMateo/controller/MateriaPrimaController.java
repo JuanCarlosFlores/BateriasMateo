@@ -24,11 +24,6 @@ public class MateriaPrimaController {
 		
 	}
 	
-	@RequestMapping(value = "/")
-	public String index() {
-		return "home";
-	}
-	
 	@RequestMapping(value = "/MateriasPrima", method = RequestMethod.GET )
 	public String list(Model model){
 		model.addAttribute("materiaPrima", MateriaPrimaService.getAll());	
@@ -47,7 +42,7 @@ public class MateriaPrimaController {
 	return "MateriaPrima/MateriaPrima";	
 	}
 	
-	@RequestMapping(value="/MateriasPrimas", method= RequestMethod.POST)
+	@RequestMapping(value="/MateriasPrima", method= RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("MateriaPrima") MateriaPrima materiaPrima, BindingResult bindingResult, Model model){
 		if ((bindingResult.hasErrors())) {
 			model.addAttribute("materiaPrima", materiaPrima);			
@@ -66,7 +61,7 @@ public class MateriaPrimaController {
 	}
 	
 	
-	@RequestMapping(value="bateria/delete/{id}")
+	@RequestMapping(value="MateriaPrima/delete/{id}")
 	public String delete(Model model, @PathVariable Long id){
 		MateriaPrima materiaPrima = MateriaPrimaService.get(id);
 		MateriaPrimaService.delete(materiaPrima);
