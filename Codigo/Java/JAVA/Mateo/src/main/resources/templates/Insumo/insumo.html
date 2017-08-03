@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<nav th:replace="fragments/nav :: nav">.........</nav>
+	<div th:include="fragments/sideMenu :: sideMenu"></div>
+	<div th:replace="fragments/deleteConfirmationModal :: deleteConfirmationModal"></div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<form role="form" action="#" th:action="@{/insumos}"	th:object="${insumo}" method="post">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Insumo</h3>
+				</div>
+				<div class="panel-body">
+				<input th:field="*{id}" type="hidden" class="form-control" id="id"></input>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">Nombre Insumo</label>
+								<input th:field="*{nombre}" type="text" class="form-control" id="nombre"></input>
+							</div>
+						</div>					
+					</div>								
+					 <div class="row">
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Detalle</label>
+									<input th:field="*{detalle}"	type="text" class="form-control" id="detalle"></input>
+									<p th:if="${#fields.hasErrors('detalle')}" class="label label-danger" th:errors="*{detalle}"></p>
+								</div>      
+					      </div>		
+					</div>
+					<div class="row">
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Valor Minimo</label>
+									<input th:field="*{valorMinimo}"	type="number" class="form-control" id="valor_minimo"></input>
+									<p th:if="${#fields.hasErrors('valorMinimo')}" class="label label-danger" th:errors="*{valorMinimo}"></p>
+								</div>      
+					      </div>		
+					</div>
+					<div class="row">
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Cantidad</label>
+									<input th:field="*{cantidad}"	type="number" class="form-control" id="cantidad"></input>
+									<p th:if="${#fields.hasErrors('cantidad')}" class="label label-danger" th:errors="*{cantidad}"></p>
+								</div>      
+					      </div>		
+					</div>						
+				</div>	
+			</div>
+			<button type="submit" class="btn btn-info">Aceptar</button>
+		</form>
+	</div>
+	<div th:include="fragments/footer :: scripts"></div>
+</body>
+</html>
