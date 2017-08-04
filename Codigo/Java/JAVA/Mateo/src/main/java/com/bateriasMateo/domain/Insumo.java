@@ -18,7 +18,6 @@ public class Insumo {
 	private String nombre;
 	private String detalle;
 	private int cantidad;
-	private int proveedor_id;
 	
 	@Column(name="valor_minimo")
 	private int valorMinimo;
@@ -58,14 +57,6 @@ public class Insumo {
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
-	}
-
-	public int getProveedor_id() {
-		return proveedor_id;
-	}
-
-	public void setProveedor_id(int proveedor_id) {
-		this.proveedor_id = proveedor_id;
 	}
 
 	public int getValorMinimo() {

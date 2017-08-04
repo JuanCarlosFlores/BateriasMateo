@@ -54,19 +54,19 @@ public class InsumoController {
 		}
 	}
 	
-	@RequestMapping(value="/Insumo/editar/{id}")
+	@RequestMapping(value="/insumo/edit/{id}")
 	public String update(Model model, @PathVariable Long id){
 		Insumo insumo = InsumoService.get(id);
 		model.addAttribute("insumo", insumo);	
-		return "Insumo/Insumo";		
+		return "insumo/insumo";		
 	}
 	
 	
-	@RequestMapping(value="Insumo/delete/{id}")
+	@RequestMapping(value="insumo/delete/{id}")
 	public String delete(Model model, @PathVariable Long id){
 		Insumo insumo = InsumoService.get(id);
 		InsumoService.delete(insumo);
-		return "redirect:/Insumo";
+		return "redirect:/insumos";
 	}
 	
 }

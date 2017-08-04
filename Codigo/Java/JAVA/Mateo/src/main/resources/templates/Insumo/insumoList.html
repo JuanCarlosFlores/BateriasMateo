@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
 <body>
@@ -22,7 +22,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="insumo : ${insumo}">
+				<tr th:each="insumo : ${insumos}">
 					<td th:text="${insumo.nombre}"></td>					
 					<td th:text="${insumo.detalle}"></td>
 					<td th:text="${insumo.cantidad}"></td>
