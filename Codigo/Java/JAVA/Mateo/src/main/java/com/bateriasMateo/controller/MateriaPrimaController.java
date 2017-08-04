@@ -19,53 +19,53 @@ public class MateriaPrimaController {
 
 	@Autowired
 	MateriaPrimaService MateriaPrimaService;
-	
-	public MateriaPrimaController(){
-		
+
+	public MateriaPrimaController() {
+
 	}
-	
-	@RequestMapping(value = "/MateriasPrima", method = RequestMethod.GET )
-	public String list(Model model){
-		model.addAttribute("materiasPrima", MateriaPrimaService.getAll());	
-		return "MateriaPrima/MateriaPrimaList";
+
+	@RequestMapping(value = "/materiasPrima", method = RequestMethod.GET)
+	public String list(Model model) {
+		model.addAttribute("materiasPrima", MateriaPrimaService.getAll());
+		return "materiaPrima/materiaPrimaList";
 	}
-	
+
 	@RequestMapping(value = "/MateriaPrima/{id}")
-	public String MateriasPrima(Model model, @PathVariable Long id ) {
+	public String MateriasPrima(Model model, @PathVariable Long id) {
 		model.addAttribute("materiaPrima", MateriaPrimaService.get(id));
 		return "MateriaPrima/MateriaPrima";
 	}
-	
-	@RequestMapping(value="/MateriaPrima/nueva")
-	public String add(Model model){
+
+	@RequestMapping(value = "/materiaPrima/nueva")
+	public String add(Model model) {
 		model.addAttribute("materiaPrima", new MateriaPrima());
-	return "MateriaPrima/MateriaPrima";	
+		return "materiaPrima/materiaPrima";
 	}
-	
-	@RequestMapping(value="/MateriasPrima", method= RequestMethod.POST)
-	public String save(@Valid @ModelAttribute("MateriaPrima") MateriaPrima materiaPrima, BindingResult bindingResult, Model model){
+
+	@RequestMapping(value = "/materiasPrima", method = RequestMethod.POST)
+	public String save(@Valid @ModelAttribute("MateriaPrima") MateriaPrima materiaPrima, BindingResult bindingResult,
+			Model model) {
 		if ((bindingResult.hasErrors())) {
-			model.addAttribute("materiaPrima", materiaPrima);			
+			model.addAttribute("materiaPrima", materiaPrima);
 			return "MateriaPrima/nuevaMateriaPrimaOK";
-		}else{
+		} else {
 			MateriaPrimaService.save(materiaPrima);
 			return "redirect:/MateriasPrima";
 		}
 	}
-	
-	@RequestMapping(value="/MateriaPrima/editar/{id}")
-	public String update(Model model, @PathVariable Long id){
+
+	@RequestMapping(value = "/MateriaPrima/editar/{id}")
+	public String update(Model model, @PathVariable Long id) {
 		MateriaPrima materiaPrima = MateriaPrimaService.get(id);
-		model.addAttribute("materiaPrima", materiaPrima);	
-		return "MateriaPrima/MateriaPrima";		
+		model.addAttribute("materiaPrima", materiaPrima);
+		return "MateriaPrima/MateriaPrima";
 	}
-	
-	
-	@RequestMapping(value="MateriaPrima/delete/{id}")
-	public String delete(Model model, @PathVariable Long id){
+
+	@RequestMapping(value = "MateriaPrima/delete/{id}")
+	public String delete(Model model, @PathVariable Long id) {
 		MateriaPrima materiaPrima = MateriaPrimaService.get(id);
 		MateriaPrimaService.delete(materiaPrima);
 		return "redirect:/MateriasPrima";
 	}
-	
+
 }

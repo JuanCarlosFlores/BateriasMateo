@@ -16,7 +16,7 @@ public class MateriaPrimaServiceImplementation implements MateriaPrimaService {
 
 	@Autowired
 	private MateriaPrimaRepository MateriaPrimaRepository;
-	
+
 	@Override
 	public MateriaPrima save(MateriaPrima pMateriaPrima) {
 		return MateriaPrimaRepository.save(pMateriaPrima);
@@ -39,7 +39,7 @@ public class MateriaPrimaServiceImplementation implements MateriaPrimaService {
 
 	@Override
 	public List<MateriaPrima> getAll() {
-		Iterable <MateriaPrima> source = MateriaPrimaRepository.findAll();
+		Iterable<MateriaPrima> source = MateriaPrimaRepository.findAll();
 		List<MateriaPrima> target = new ArrayList<>();
 		source.forEach(target::add);
 		return target;

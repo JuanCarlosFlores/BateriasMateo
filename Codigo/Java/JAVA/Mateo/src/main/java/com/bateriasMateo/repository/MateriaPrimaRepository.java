@@ -5,7 +5,6 @@ import com.bateriasMateo.domain.MateriaPrima;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 @RepositoryRestResource(collectionResourceRel = "MateriaPrima", path = "MateriaPrima")
-public interface MateriaPrimaRepository extends PagingAndSortingRepository<MateriaPrima, Long>{
-	
+public interface MateriaPrimaRepository extends PagingAndSortingRepository<MateriaPrima, Long> {
 
 }
