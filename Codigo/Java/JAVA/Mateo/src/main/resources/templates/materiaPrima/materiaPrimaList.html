@@ -33,7 +33,7 @@
 						</a>
 					</td>
 					<td>
-						<a class="btn btn-default" th:href="'/materiaPrima/delete/' + ${materiaPrima.id}">
+						<a class="btn btn-default" href="#modal_delete" data-toggle="modal" th:attr="data-id='/materiaPrima/delete/' + ${materiaPrima.id}">
 							<span title="Borrar" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</a>
 					</td>
