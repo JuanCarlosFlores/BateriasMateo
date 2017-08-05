@@ -46,10 +46,10 @@ public class BateriaController {
 	public String save(@Valid @ModelAttribute("bateria") Bateria bateria, BindingResult bindingResult, Model model){
 		if ((bindingResult.hasErrors())) {
 			model.addAttribute("bateria", bateria);			
-			return "bateria/newBateriaOK";
+			return "redirect:/baterias";
 		}else{
 			bateriaService.save(bateria);
-			return "redirect:baterias";
+			return "bateria/newBateriaOK";
 		}
 	}
 	@RequestMapping(value="/bateria/edit/{id}")
