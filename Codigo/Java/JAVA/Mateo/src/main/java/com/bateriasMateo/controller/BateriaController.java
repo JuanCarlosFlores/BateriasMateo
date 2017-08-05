@@ -26,11 +26,6 @@ public class BateriaController {
 		super();
 	}
 	
-	@RequestMapping(value = "/")
-	public String index() {
-		return "home";
-	}
-	
 	@RequestMapping(value = "/baterias", method = RequestMethod.GET )
 	public String list(Model model){
 		model.addAttribute("baterias", bateriaService.getAll());	

@@ -45,27 +45,28 @@ public class MateriaPrimaController {
 	@RequestMapping(value = "/materiasPrima", method = RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("MateriaPrima") MateriaPrima materiaPrima, BindingResult bindingResult,
 			Model model) {
-		if ((bindingResult.hasErrors())) {
+		if ((bindingResult.hasErrors())) {			
 			model.addAttribute("materiaPrima", materiaPrima);
-			return "MateriaPrima/nuevaMateriaPrimaOK";
+			return "redirect:/materiasPrima";
+			
 		} else {
 			MateriaPrimaService.save(materiaPrima);
-			return "redirect:/MateriasPrima";
+			return "MateriaPrima/nuevaMateriaPrimaOK";	
 		}
 	}
 
-	@RequestMapping(value = "/MateriaPrima/editar/{id}")
+	@RequestMapping(value = "/materiaPrima/edit/{id}")
 	public String update(Model model, @PathVariable Long id) {
 		MateriaPrima materiaPrima = MateriaPrimaService.get(id);
 		model.addAttribute("materiaPrima", materiaPrima);
-		return "MateriaPrima/MateriaPrima";
+		return "materiaPrima/materiaPrima";
 	}
 
-	@RequestMapping(value = "MateriaPrima/delete/{id}")
-	public String delete(Model model, @PathVariable Long id) {
+	@RequestMapping(value = "/materiaPrima/delete/{id}")
+	public String delete(Model model, @PathVariable Long id) {		
 		MateriaPrima materiaPrima = MateriaPrimaService.get(id);
 		MateriaPrimaService.delete(materiaPrima);
-		return "redirect:/MateriasPrima";
+		return "redirect:/materiasPrima";
 	}
 
 }
