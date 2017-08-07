@@ -47,10 +47,10 @@ public class InsumoController {
 	public String save(@Valid @ModelAttribute("Insumo") Insumo insumo, BindingResult bindingResult, Model model){
 		if ((bindingResult.hasErrors())) {
 			model.addAttribute("insumo", insumo);			
-			return "insumo/nuevoInsumoOK";
+			return "redirect:/insumos";
 		}else{
 			InsumoService.save(insumo);
-			return "redirect:/insumos";
+			return "insumo/nuevoInsumoOK";
 		}
 	}
 	
