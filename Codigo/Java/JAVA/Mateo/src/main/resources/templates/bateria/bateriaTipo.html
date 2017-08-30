@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<nav th:replace="fragments/nav :: nav">.........</nav>
+	<div th:include="fragments/sideMenu :: sideMenu"></div>
+	<div th:replace="fragments/deleteConfirmationModal :: deleteConfirmationModal"></div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<form role="form" action="#" th:action="@{/baterias/tipos}"	th:object="${bateriaTipo}" method="post">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tipo de Bateria</h3>
+				</div>
+				<div class="panel-body">
+				<input th:field="*{bateriaTipoID}" type="hidden" class="form-control" id="bateriaTipoID"></input>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">Modelo:</label>
+								<input th:field="*{nombre}" type="text" class="form-control" id="nombre"></input>
+							</div>
+						</div>					
+					</div>								
+					 <div class="row">
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Descripcion:</label>
+									<input th:field="*{descripcion}" type="text" class="form-control" id="descripcion"></input>
+									<p th:if="${#fields.hasErrors('descripcion')}" class="label label-danger" th:errors="*{descripcion}"></p>
+								</div>      
+					      </div>		
+					</div>
+					<div class="row">
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Cantidad Minima:</label>
+									<input th:field="*{valorMinimo}" type="text" class="form-control" id="valorMinimo"></input>
+									<p th:if="${#fields.hasErrors('valorMinimo')}" class="label label-danger" th:errors="*{valorMinimo}"></p>
+								</div>      
+					      </div>		
+					</div>
+				</div>	
+			</div>
+			<button type="submit" class="btn btn-info">Aceptar</button>
+		</form>
+	</div>
+	<div th:include="fragments/footer :: scripts"></div>
+</body>
+</html>

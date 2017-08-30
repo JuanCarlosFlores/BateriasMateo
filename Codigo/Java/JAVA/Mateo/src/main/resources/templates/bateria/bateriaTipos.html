@@ -10,38 +10,38 @@
 		<h1 class="fragments/page-header"></h1>
 		<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h3 class="panel-title">Baterias</h3>
+					<h3 class="panel-title">BateriasTipos</h3>
 				</div>
 				<div class="panel-body">
 		<table class="table table-striped data-tables">
 			<thead>
 				<tr>
-					<th>Tipo</th>
+					<th>Nombre</th>
 					<th>Descripcion</th>
-					<th>Cantidad</th>
+					<th>ValorMinimo</th>
 					<th></th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="bateria : ${baterias}">
-					<td th:text="${bateria.bateriaTipo.nombre}"></td>
-					<td th:text="${bateria.descripcion}"></td>
-					<td th:text="${bateria.cantidad}"></td>					
+				<tr th:each="bateriaTipo : ${bateriaTipo}">
+					<td th:text="${bateriaTipo.nombre}"></td>
+					<td th:text="${bateriaTipo.descripcion}"></td>
+					<td th:text="${bateriaTipo.valorMinimo}"></td>					
 					<td>
-						<a class="btn btn-default"	th:href="'/bateria/edit/' + ${bateria.id}"> 
+						<a class="btn btn-default"	th:href="'/baterias/tipo/edit/'+${bateriaTipo.bateriaTipoID}"> 
 							<span title="Modificar" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</a>
 					</td>
 					<td>
-						<a class="btn btn-default" href="#modal_delete" data-toggle="modal" th:attr="data-id='/bateria/delete/' + ${bateria.id}">
+						<a class="btn btn-default" href="#modal_delete" data-toggle="modal" th:attr="data-id='/baterias/tipo/delete/'+${bateriaTipo.bateriaTipoID}">
 							<span title="Borrar" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a href="/bateria/new" title="Agregar"  class="btn btn-default" role="button">Nueva Bateria</a>
+		<a href="/bateria/tipo/new" title="Agregar"  class="btn btn-default" role="button">Nueva Bateria</a>
 	</div>
 	</div>
 	</div>

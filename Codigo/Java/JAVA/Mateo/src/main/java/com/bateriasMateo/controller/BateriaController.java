@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bateriasMateo.domain.Bateria;
+import com.bateriasMateo.domain.BateriaTipo;
 import com.bateriasMateo.service.BateriaService;
+import com.bateriasMateo.service.BateriaTipoService;
+import com.bateriasMateo.service.implementation.BateriaTipoServiceImpl;
 
 
 
@@ -21,6 +24,8 @@ public class BateriaController {
 	
 	@Autowired
 	BateriaService bateriaService;
+	@Autowired
+	BateriaTipoService bateriaTipoService;
 	
 	public BateriaController(){
 		super();
@@ -40,6 +45,7 @@ public class BateriaController {
 	@RequestMapping(value="/bateria/new")
 	public String newBateriaView(Model model){
 		model.addAttribute("bateria", new Bateria());
+		model.addAttribute("bateriaTipos",bateriaTipoService.getAll() );
 	return "bateria/bateria";	
 	}
 	@RequestMapping(value="/baterias", method= RequestMethod.POST)
@@ -56,6 +62,7 @@ public class BateriaController {
 	public String updateBateriaView(Model model, @PathVariable Long id){
 		Bateria bateria = bateriaService.get(id);
 		model.addAttribute("bateria", bateria);	
+		model.addAttribute("bateriaTipos", bateriaTipoService.get(bateria.getBateriaTipo().getBateriaTipoID()));
 		return "bateria/bateria";		
 	}
 	
