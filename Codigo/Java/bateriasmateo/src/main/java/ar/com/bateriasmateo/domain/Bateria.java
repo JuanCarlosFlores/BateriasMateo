@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table (name ="BATERIA")
 public class Bateria {
@@ -32,7 +31,7 @@ public class Bateria {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ALMACEN_ID")
-	private Almacen Almacen;
+	private Almacen almacen;
 
 	
 	public long getId() {
@@ -75,14 +74,6 @@ public class Bateria {
 		this.bateriaTipo = bateriaTipo;
 	}
 
-	public Almacen getAlmacen() {
-		return Almacen;
-	}
-
-	public void setAlmacen(Almacen almacen) {
-		Almacen = almacen;
-	}
-	
 	
 	
 	

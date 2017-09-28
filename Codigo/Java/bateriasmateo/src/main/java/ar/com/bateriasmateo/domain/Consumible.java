@@ -15,9 +15,9 @@ import javax.persistence.Table;
 @Entity
 @Table
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-public class Consumible {
+public abstract class Consumible implements Producto{
 	@Id	
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name="ID")
 	private long id;
 	
