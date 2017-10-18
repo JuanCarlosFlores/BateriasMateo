@@ -15,8 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Inheritance( strategy = InheritanceType.SINGLE_TABLE )
-@DiscriminatorColumn( name="TIPO_RELACION" , discriminatorType = DiscriminatorType.STRING)
+//@Inheritance( strategy = InheritanceType.SINGLE_TABLE )
+//@DiscriminatorColumn( name="TIPO_RELACION" , discriminatorType = DiscriminatorType.STRING)
 @Table (name ="ESTACION_PRODUCTOS")
 public abstract class EstacionProductos {
 	

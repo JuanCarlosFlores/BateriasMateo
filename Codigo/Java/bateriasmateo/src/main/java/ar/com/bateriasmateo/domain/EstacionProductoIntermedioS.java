@@ -11,9 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue( value="SALIDA" )
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+//@DiscriminatorValue( value="SALIDA" )
 public class EstacionProductoIntermedioS extends EstacionProductos{
 	
 	@ManyToOne(fetch = FetchType.EAGER)

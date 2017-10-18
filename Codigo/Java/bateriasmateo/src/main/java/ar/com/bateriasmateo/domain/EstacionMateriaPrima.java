@@ -11,9 +11,9 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("ENTRADA")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+//@DiscriminatorValue("ENTRADA")
 public class EstacionMateriaPrima extends EstacionProductos{
 	
 

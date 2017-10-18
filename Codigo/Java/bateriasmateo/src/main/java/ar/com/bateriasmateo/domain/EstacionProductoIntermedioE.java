@@ -11,9 +11,9 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue( value="ENTRADA" )
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+//@DiscriminatorValue( value="ENTRADA" )
 public class EstacionProductoIntermedioE extends EstacionProductos {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
