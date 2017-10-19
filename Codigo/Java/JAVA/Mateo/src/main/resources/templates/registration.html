@@ -50,12 +50,27 @@
 						</div>
 					</div>
 					
-					<!-- INICIO Prueba desplegable -->
+					<!-- INICIO Prueba desplegable 
 					
 					<select class="col-sm-9">
 						<option> ADMIN </option>
 						<option> OPERARIO </option>					
 					</select>
+					-->
+					
+					<div class="row">					 
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<select id="role" th:field="*{role}" class="form-control">
+									<option th:each="role : ${roles}" th:value="${role.roleid}" th:text="${role.role}"></option>
+									</select>
+								</div>      
+					      </div>		
+					</div>
+					
+					
+					
+					
 					
 					<!-- FIN Prueba desplegable -->
 					

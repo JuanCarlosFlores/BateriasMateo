@@ -5,12 +5,14 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
@@ -43,9 +45,14 @@ import org.springframework.data.annotation.Transient;
 		private String lastName;
 		@Column(name = "active")
 		private int active;
-		@ManyToMany(cascade = CascadeType.ALL)
-		@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-		private Set<Role> roles;
+		
+		@ManyToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name="role_id")
+		private Role userRole;
+		
+		//@ManyToMany(cascade = CascadeType.ALL)
+		//@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+		//private Set<Role> roles;
 
 		public int getId() {
 			return id;
@@ -95,12 +102,12 @@ import org.springframework.data.annotation.Transient;
 			this.active = active;
 		}
 
-		public Set<Role> getRoles() {
-			return roles;
+		public Role getRole() {
+			return userRole;
 		}
 
-		public void setRoles(Set<Role> roles) {
-			this.roles = roles;
+		public void setRole (Role rol) {
+			this.userRole = rol;
 		}
 
 }

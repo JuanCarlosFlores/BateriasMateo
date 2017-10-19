@@ -1,12 +1,15 @@
 package com.bateriasMateo.service.implementation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bateriasMateo.domain.Bateria;
 import com.bateriasMateo.domain.Role;
 import com.bateriasMateo.domain.User;
 import com.bateriasMateo.repository.RoleRepository;
@@ -32,8 +35,17 @@ public class UserServiceImpl implements UserService{
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        Role userRole = roleRepository.findByRole("ADMIN");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        
+        //Role userRole = roleRepository.findByRole("ADMIN");
+        //user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
+	@Override
+	public List<User> getAll() {	
+		Iterable <User> source = userRepository.findAll();
+		List<User> target = new ArrayList<>();
+		source.forEach(target::add);
+		return target;
+	}
+	
 }

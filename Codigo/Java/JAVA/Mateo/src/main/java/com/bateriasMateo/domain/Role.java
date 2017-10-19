@@ -1,10 +1,14 @@
 package com.bateriasMateo.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +21,9 @@ public class Role {
 	@Column(name="role")
 	private String role;
 	
+	@OneToMany(mappedBy ="userRole", cascade=CascadeType.ALL)
+	private List<User> users;
+	
 	public int getId() {
 		return id;
 	}
@@ -28,6 +35,12 @@ public class Role {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers (List<User> users) {
+		this.users = users;
 	}
 	
 	
