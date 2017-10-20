@@ -1,8 +1,9 @@
 package ar.com.bateriasmateo.domain;
-
 import javax.persistence.Entity;
 
-@Entity
+/*
+ * @Entity
+ */
 public interface Producto {
 	
 	
