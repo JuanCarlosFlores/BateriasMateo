@@ -17,8 +17,6 @@ import com.bateriasMateo.service.BateriaService;
 import com.bateriasMateo.service.BateriaTipoService;
 import com.bateriasMateo.service.implementation.BateriaTipoServiceImpl;
 
-
-
 @Controller
 public class BateriaController {
 	

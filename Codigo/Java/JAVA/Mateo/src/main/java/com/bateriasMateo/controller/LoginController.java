@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bateriasMateo.domain.Bateria;
 import com.bateriasMateo.domain.User;
+import com.bateriasMateo.service.RoleService;
 import com.bateriasMateo.service.UserService;
 
 @Controller
@@ -19,6 +24,7 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	private RoleService rolService;
 
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
@@ -28,6 +34,12 @@ public class LoginController {
 	}
 	
 	
+	@RequestMapping(value = "/usuarios", method = RequestMethod.GET )
+	public String list(Model model){
+		model.addAttribute("usuarios", userService.getAll());	
+		return "usuarios/usuarioList";
+	}
+	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -36,6 +48,7 @@ public class LoginController {
 		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
+	
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
@@ -52,12 +65,15 @@ public class LoginController {
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
+			modelAndView.addObject("roles", rolService.getAll());
 			modelAndView.setViewName("registration");
 			
 		}
 		return modelAndView;
 	}
 	
+	
+
 	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView();

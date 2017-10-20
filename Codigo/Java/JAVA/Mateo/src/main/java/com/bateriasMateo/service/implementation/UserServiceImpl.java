@@ -36,7 +36,9 @@ public class UserServiceImpl implements UserService{
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         
-        //Role userRole = roleRepository.findByRole("ADMIN");
+        Role userRole = roleRepository.findByRole("ADMIN");
+        
+        user.setRole(userRole);
         //user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
@@ -46,6 +48,18 @@ public class UserServiceImpl implements UserService{
 		List<User> target = new ArrayList<>();
 		source.forEach(target::add);
 		return target;
+	}
+
+	@Override
+	public void delete(User user) {
+		userRepository.delete(user);
+		
+	}
+
+	@Override
+	public User get(Long pId) {
+		return userRepository.findOne(pId);
+	
 	}
 	
 }
