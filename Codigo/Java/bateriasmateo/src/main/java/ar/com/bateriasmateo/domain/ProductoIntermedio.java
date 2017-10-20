@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name ="PRODUCTO_INTERMEDIO")
-public class ProductoIntermedio implements Producto{
+public class ProductoIntermedio implements Producto, Producible{
 	
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -17,8 +17,9 @@ public class Estacion {
 	private long id;
 	
 	@Column(name="NOMBRE")	
-	private String descripcion;	
+	private String descripcion;
 	
+
 	public Estacion() {
 		super();
 	}

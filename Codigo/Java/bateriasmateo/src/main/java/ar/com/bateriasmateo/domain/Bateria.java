@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name ="BATERIA")
-public class Bateria {
+public class Bateria  implements Producible {
 	
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO)
