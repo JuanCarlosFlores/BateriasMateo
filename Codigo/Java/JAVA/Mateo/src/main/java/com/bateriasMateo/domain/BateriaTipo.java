@@ -1,8 +1,10 @@
 package com.bateriasMateo.domain;
 
-import java.util.List;
+
 
 import javax.persistence.*;
+
+
 
 @Entity
 @Table (name ="bateria_tipo")
@@ -13,8 +15,6 @@ public class BateriaTipo {
 	private long bateriaTipoID;
 	private String descripcion;
 	private String nombre;
-	@OneToMany(mappedBy ="bateriaTipo", cascade=CascadeType.ALL)
-	private List<Bateria> baterias;
 	@Column(name="valor_minimo")
 	private long valorMinimo;
 	
@@ -41,13 +41,6 @@ public class BateriaTipo {
 	}
 	public void setValorMinimo(long valorMinimo) {
 		this.valorMinimo = valorMinimo;
-	}
-	public List<Bateria> getBaterias() {
-		return baterias;
-	}
-	public void setBaterias(List<Bateria> baterias) {
-		this.baterias = baterias;
-	}
-	
+	}	
 	
 }

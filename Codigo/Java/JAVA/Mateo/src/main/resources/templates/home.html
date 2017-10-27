@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head"></head>
+<head th:replace="fragments/head :: head">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script type="text/javascript" src="/js/getAll.js"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Baterias', 'T110', 'T132'],
+          ['Año 2010', 100, 200],
+          ['Año 2011', 1170, 460],
+          ['Año 2013', 660, 1120],          
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Produccion de Baterias',
+            subtitle: 'Tipos de Baterias',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        setInterval(function(){
+            data.setValue(0, 2, 40 + Math.round(60 * Math.random()));
+            chart.draw(data,google.charts.Bar.convertOptions(options));
+        },100000);
+      }
+    </script>
+</head>
 <body>
-	<nav th:replace="fragments/nav :: nav">.........</nav>
-	<div th:include="fragments/sideMenu :: sideMenu"></div>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Bienvenidos</h3>
-			</div>
-			<div class="panel-body">Sistema de Control de Gestion Baterias Mateo</div>
-		</div>
-
-	</div>
-
-	<div th:include="fragments/footer :: scripts"></div>
+  <nav th:replace="fragments/nav :: nav">.........</nav>
+  <div th:include="fragments/sideMenu :: sideMenu"></div>
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Bienvenidos</h3>
+      </div>
+      <div class="panel-body">Sistema de Control de Gestion Baterias Mateo</div>      
+    </div>
+    <div class="col-sm-3 col-sm-offset-3  col-md-10 col-md-offset-2" id="columnchart_material"></div>
+    <div id="getDiv">
+    <button id="getBateriasBtn">GetBaterias</button>    
+  </div>
+   <div id="getResultDiv">
+      <ul class="list-group">
+      </ul>
+    </div>   
+  </div>  
+  <div th:include="fragments/footer :: scripts"></div>
 </body>
 </html>

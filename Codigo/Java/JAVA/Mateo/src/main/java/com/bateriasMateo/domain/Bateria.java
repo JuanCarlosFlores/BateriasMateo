@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="bateria")
 public class Bateria {
@@ -17,7 +19,7 @@ public class Bateria {
 	private long id;
 	private long cantidad;
 	private String descripcion;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="Bateria_tipo_id")
 	private BateriaTipo bateriaTipo;
 	
@@ -45,6 +47,6 @@ public class Bateria {
 	public void setBateriaTipo(BateriaTipo bateriaTipo) {
 		this.bateriaTipo = bateriaTipo;
 	}
-	
+		
 
 }
