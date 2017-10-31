@@ -1,9 +1,11 @@
 package ar.com.bateriasmateo.domain;
 
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue( value="I" )
 public class Insumo extends Consumible {
 
 	@Override

@@ -1,6 +1,7 @@
 package ar.com.bateriasmateo.domain;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,8 +15,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-public abstract class Consumible implements Producto{
+@Inheritance( strategy = InheritanceType.SINGLE_TABLE )
+@DiscriminatorColumn( name="TIPO" )
+public abstract class Consumible{
 	@Id	
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name="ID")
@@ -74,7 +76,9 @@ public abstract class Consumible implements Producto{
 	public void setMinimo(long minimo) {
 		this.minimo = minimo;
 	}
-
 	
+	public abstract void consumir (int cantidad);
+	
+	public abstract int verDisponibilidad ();
 	
 }

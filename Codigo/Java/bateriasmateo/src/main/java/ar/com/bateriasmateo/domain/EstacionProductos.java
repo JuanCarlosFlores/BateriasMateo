@@ -18,13 +18,13 @@ public abstract class EstacionProductos {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID")
 	private long id;
-/*
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ESTACION_ID")
 	private Estacion estacion;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="PRODUCTO_ID")
-	private Producto producto;*/
+	@JoinColumn(name="CONSUMIBLE_ID")
+	private Consumible consumible;
 	
 }

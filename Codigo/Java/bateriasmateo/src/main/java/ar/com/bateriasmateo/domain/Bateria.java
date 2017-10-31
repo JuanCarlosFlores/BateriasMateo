@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name ="BATERIA")
-public class Bateria  implements Producible {
+public class Bateria{
 	
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,7 +32,10 @@ public class Bateria  implements Producible {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ALMACEN_ID")
 	private Almacen almacen;
-
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="ESTACION_ID")
+	private Estacion estacion;
 	
 	public long getId() {
 		return id;

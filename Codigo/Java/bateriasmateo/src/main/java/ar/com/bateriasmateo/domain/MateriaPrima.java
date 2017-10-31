@@ -1,8 +1,10 @@
 package ar.com.bateriasmateo.domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue( value="MP" )
 public class MateriaPrima extends Consumible{
 
 	@Override
