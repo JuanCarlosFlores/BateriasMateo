@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bateriasMateo.domain.Bateria;
 import com.bateriasMateo.domain.User;
 import com.bateriasMateo.service.RoleService;
 import com.bateriasMateo.service.UserService;
@@ -40,6 +39,47 @@ public class LoginController {
 		return "usuarios/usuarioList";
 	}
 	
+	
+	//@RequestMapping(value="/registration", method = RequestMethod.GET)
+	@RequestMapping(value="/registration")
+	public String newUserView(Model model){
+		model.addAttribute("user", new User());
+		model.addAttribute("roles", rolService.getAll());
+		
+		//ModelAndView modelAndView = new ModelAndView();
+		//User user = new User();
+		//modelAndView.addObject("user", user);
+		//modelAndView.setViewName("registration");
+		return "registration";
+	}
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public String save(@Valid @ModelAttribute ("user") User user, BindingResult bindingResult, Model model) {
+		//ModelAndView modelAndView = new ModelAndView();
+		User userExists = userService.findUserByEmail(user.getEmail());
+		if (userExists != null) {
+			bindingResult
+					.rejectValue("email", "error.user",
+							"There is already a user registered with the email provided");
+		}
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("user", user);
+			return "redirect:/usuario";
+		} else {
+			userService.saveUser(user);
+			return "usuarios/usuario";
+			
+			//modelAndView.addObject("successMessage", "User has been registered successfully");
+			//modelAndView.addObject("user", new User());
+			//modelAndView.addObject("roles", rolService.getAll());
+			//modelAndView.setViewName("registration");
+			
+		}
+		
+	}
+	
+	
+	
+	/*
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -72,7 +112,7 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	
+	*/
 
 	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public ModelAndView home(){
@@ -84,4 +124,5 @@ public class LoginController {
 		modelAndView.setViewName("/home");
 		return modelAndView;
 	}
+	
 }
