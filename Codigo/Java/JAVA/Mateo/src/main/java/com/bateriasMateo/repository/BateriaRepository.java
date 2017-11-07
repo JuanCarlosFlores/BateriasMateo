@@ -11,3 +11,4 @@ public interface BateriaRepository extends PagingAndSortingRepository<Bateria, L
 	
 
 }
+	
