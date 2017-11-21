@@ -77,7 +77,21 @@ public class Bateria{
 		this.bateriaTipo = bateriaTipo;
 	}
 
-	
+	public Almacen getAlmacen() {
+		return almacen;
+	}
+
+	public void setAlmacen(Almacen almacen) {
+		this.almacen = almacen;
+	}
+
+	public Estacion getEstacion() {
+		return estacion;
+	}
+
+	public void setEstacion(Estacion estacion) {
+		this.estacion = estacion;
+	}	
 	
 	
 }
