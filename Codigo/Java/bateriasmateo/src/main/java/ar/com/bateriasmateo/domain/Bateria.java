@@ -20,14 +20,15 @@ public class Bateria{
 	private long id;	
 	
 	@Column(name="NRO_LOTE")	
-	private int numeroLote;
-	
-	private boolean reservada;
-	private boolean vendida;	
+	private int numeroLote;	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="BATERIA_TIPO_ID")
 	private BateriaTipo bateriaTipo;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="BATERIA_ESTADO_ID")
+	private BateriaEstado bateriaEstado;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ALMACEN_ID")
@@ -51,22 +52,6 @@ public class Bateria{
 
 	public void setNumeroLote(int numeroLote) {
 		this.numeroLote = numeroLote;
-	}
-
-	public boolean isReservada() {
-		return reservada;
-	}
-
-	public void setReservada(boolean reservada) {
-		this.reservada = reservada;
-	}
-
-	public boolean isVendida() {
-		return vendida;
-	}
-
-	public void setVendida(boolean vendida) {
-		this.vendida = vendida;
 	}
 
 	public BateriaTipo getBateriaTipo() {

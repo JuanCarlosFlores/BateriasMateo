@@ -8,29 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name ="ALMACEN")
-public class Almacen {
-	
-	@Id	
+@Table(name="bateria_estado")
+public class BateriaEstado {
+	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID")
-	private long id;
+	@Column(name="BATERIA_ESTADO_ID")
+	private long bateriaEstadoId;
 	private String nombre;
 	private String descripcion;
-	private int capacidad;
-	
-	
-	
-	
-	public Almacen() {
-		super();
-	}
-	
 	public long getId() {
-		return id;
+		return bateriaEstadoId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setId(long bateriaEstadoId) {
+		this.bateriaEstadoId = bateriaEstadoId;
+	}
+	public String getName() {
+		return nombre;
+	}
+	public void setName(String nombre) {
+		this.nombre = nombre;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -38,20 +34,6 @@ public class Almacen {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public int getCapacidad() {
-		return capacidad;
-	}
-	public void setCapacidad(int capacidad) {
-		this.capacidad = capacidad;
-	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
 	
 }
