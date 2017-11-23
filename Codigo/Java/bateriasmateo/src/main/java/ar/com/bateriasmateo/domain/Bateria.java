@@ -26,7 +26,7 @@ public class Bateria{
 	@JoinColumn(name="BATERIA_TIPO_ID")
 	private BateriaTipo bateriaTipo;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="BATERIA_ESTADO_ID")
 	private BateriaEstado bateriaEstado;
 	
@@ -76,6 +76,14 @@ public class Bateria{
 
 	public void setEstacion(Estacion estacion) {
 		this.estacion = estacion;
+	}
+
+	public BateriaEstado getBateriaEstado() {
+		return bateriaEstado;
+	}
+
+	public void setBateriaEstado(BateriaEstado bateriaEstado) {
+		this.bateriaEstado = bateriaEstado;
 	}	
 	
 	

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ar.com.bateriasmateo.domain.Bateria;
 import ar.com.bateriasmateo.service.AlmacenService;
+import ar.com.bateriasmateo.service.BateriaEstadoService;
 import ar.com.bateriasmateo.service.BateriaService;
+import ar.com.bateriasmateo.service.BateriaTipoService;
 
 @Controller
 public class BateriaController {
@@ -22,6 +24,10 @@ public class BateriaController {
 	BateriaService bateriaService;
 	@Autowired
 	AlmacenService almacenService;
+	@Autowired
+	BateriaTipoService bateriaTipoService;
+	@Autowired
+	BateriaEstadoService bateriaEstadoService;
 	
 	public BateriaController(){
 		super();
@@ -41,6 +47,8 @@ public class BateriaController {
 	public String nuevaBateria(Model model){
 		model.addAttribute("bateria", new Bateria());
 		model.addAttribute("almacenes", almacenService.getAll());
+		model.addAttribute("tipos", bateriaTipoService.getAll());
+		model.addAttribute("estados", bateriaEstadoService.getAll());
 		return "baterias/bateria/bateria";
 	}
 	@RequestMapping(value = "/baterias", method = RequestMethod.POST )
@@ -51,7 +59,7 @@ public class BateriaController {
 		}
 		else
 			bateriaService.save(bateria);
-			return "baterias/bateria/saveBateriaOk";
+			return "baterias/bateria/newBateriaOK";
 	}
 	@RequestMapping(value="/baterias/bateria/edit/{id}")
 	public String editBateriaView(Model model, @PathVariable Long id ){

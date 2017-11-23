@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+	<nav th:replace="fragments/nav :: nav">.........</nav>
+	<div th:include="fragments/sideMenu :: sideMenu"></div>
+	<div th:replace="fragments/deleteConfirmationModal :: deleteConfirmationModal"></div>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<form role="form" action="#" th:action="@{/baterias}"	th:object="${bateria}" method="post">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Bateria</h3>
+				</div>
+				<div class="panel-body">
+				<input th:field="*{id}" type="hidden" class="form-control" id="id"></input>												
+					<div class="row">					 
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Num Lote:</label>
+									<input th:field="*{numeroLote}"	type="text" class="form-control" id="numeroLote"></input>
+									<p th:if="${#fields.hasErrors('numeroLote')}" class="label label-danger" th:errors="*{numeroLote}"></p>
+								</div>      
+					      </div>		
+					</div>	
+					<div class="row">					 
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Tipo:</label>
+									<select  th:field="*{bateriaTipo}" class="form-control">
+									<option th:each="tipo : ${tipos}" th:value="${tipo.id}" th:text="${tipo.nombre}"></option>
+									</select>
+								</div>      
+					      </div>		
+					</div>
+					<div class="row">					 
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Almacen:</label>
+									<select  th:field="*{almacen}" class="form-control">
+									<option th:each="almacen : ${almacenes}" th:value="${almacen.id}" th:text="${almacen.nombre}"></option>
+									</select>
+								</div>      
+					      </div>		
+					</div>
+					<div class="row">					 
+					     <div class="col-sm-6">
+								<div class="form-group">
+									<label for="name">Estado:</label>
+									<select th:field="*{bateriaEstado}" class="form-control">
+									<option th:each="estado : ${estados}" th:value="${estado.bateriaEstadoId}" th:text="${estado.nombre}"></option>
+									</select>
+								</div>      
+					      </div>		
+					</div>										
+				</div>	
+			</div>
+			<button type="submit" class="btn btn-info">Aceptar</button>
+		</form>
+	</div>
+	<div th:include="fragments/footer :: scripts"></div>
+</body>
+</html>

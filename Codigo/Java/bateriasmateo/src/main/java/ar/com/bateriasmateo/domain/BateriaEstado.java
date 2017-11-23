@@ -16,16 +16,16 @@ public class BateriaEstado {
 	private long bateriaEstadoId;
 	private String nombre;
 	private String descripcion;
-	public long getId() {
+	public long getBateriaEstadoId() {
 		return bateriaEstadoId;
 	}
-	public void setId(long bateriaEstadoId) {
+	public void setBateriaEstadoId(long bateriaEstadoId) {
 		this.bateriaEstadoId = bateriaEstadoId;
 	}
-	public String getName() {
+	public String getNombre() {
 		return nombre;
 	}
-	public void setName(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	public String getDescripcion() {
@@ -34,6 +34,8 @@ public class BateriaEstado {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+
 
 	
 }
