@@ -7,14 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.bateriasmateo.domain.Almacen;
+import ar.com.bateriasmateo.domain.Bateria;
+import ar.com.bateriasmateo.domain.BateriaTipo;
+import ar.com.bateriasmateo.dto.AlmacenDTO;
+import ar.com.bateriasmateo.dto.BateriaAlmacenDTO;
 import ar.com.bateriasmateo.repository.AlmacenRepository;
+import ar.com.bateriasmateo.repository.BateriaTipoRepository;
 import ar.com.bateriasmateo.service.AlmacenService;
 
 @Service
 public class AlmacenServiceImpl implements AlmacenService{
 
+	
+	BateriaAlmacenDTO bateriaView;
 	@Autowired
 	AlmacenRepository almacenRepository;
+	@Autowired
+	BateriaTipoRepository bateriaTipoRepository;
+	int cantidadAux=0;
+	
 	@Override
 	public Almacen save(Almacen pAlmacen) {
 		return almacenRepository.save(pAlmacen);
@@ -44,5 +55,35 @@ public class AlmacenServiceImpl implements AlmacenService{
 		source.forEach(target::add);
 		return target;
 	}
+
+	@Override
+	public AlmacenDTO getViewAlmacenDTO(Almacen almacen) {		
+		AlmacenDTO almacenView = new AlmacenDTO();
+		almacenView.setNombre(almacen.getNombre());
+		almacenView.setDescripcion(almacen.getDescripcion());
+		almacenView.setCapacidad(almacen.getCapacidad());
+		Iterable<BateriaTipo> tipos = bateriaTipoRepository.findAll();
+		Iterable<Bateria> baterias = almacen.getBaterias();
+		ArrayList<BateriaAlmacenDTO> bateriasView =new ArrayList<BateriaAlmacenDTO>();
+		for (BateriaTipo tipo : tipos) {
+			bateriaView = new BateriaAlmacenDTO();			
+			for (Bateria bateria : baterias) {
+				if(tipo.getId()==bateria.getBateriaTipo().getId()){
+					cantidadAux=cantidadAux+1;
+				}
+			}
+			if(cantidadAux>0){
+				bateriaView.setTipoBateria(tipo.getNombre());
+				bateriaView.setCantidad(cantidadAux);
+				cantidadAux=0;
+				bateriasView.add(bateriaView);
+			}
+		}
+		almacenView.setBaterias(bateriasView);
+		
+	
+		return almacenView;
+	}
+	
 
 }

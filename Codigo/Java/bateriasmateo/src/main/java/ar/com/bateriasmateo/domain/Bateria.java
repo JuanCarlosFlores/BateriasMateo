@@ -16,7 +16,7 @@ public class Bateria{
 	
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID")
+	@Column(name="id_bateria")
 	private long id;	
 	
 	@Column(name="NRO_LOTE")	
@@ -30,9 +30,10 @@ public class Bateria{
 	@JoinColumn(name="BATERIA_ESTADO_ID")
 	private BateriaEstado bateriaEstado;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ALMACEN_ID")
 	private Almacen almacen;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="ESTACION_ID")
@@ -84,7 +85,6 @@ public class Bateria{
 
 	public void setBateriaEstado(BateriaEstado bateriaEstado) {
 		this.bateriaEstado = bateriaEstado;
-	}	
-	
+	}
 	
 }

@@ -10,6 +10,6 @@ public interface BateriaService {
 	public void delete (Bateria pBateria);
 	public Bateria getOne (Long pId);
 	public List<Bateria> getAll();
-	public List<Bateria> getByAlmacen(Long pId);
+	/*public List<Bateria> getByAlmacen(Long pId);*/
 
 }

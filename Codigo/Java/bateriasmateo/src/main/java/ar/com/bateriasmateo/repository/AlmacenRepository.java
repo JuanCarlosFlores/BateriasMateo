@@ -1,11 +1,11 @@
 package ar.com.bateriasmateo.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import ar.com.bateriasmateo.domain.Almacen;
 
-@RepositoryRestResource(collectionResourceRel = "Almacen", path="Almacen")
+@Repository
 public interface AlmacenRepository extends PagingAndSortingRepository<Almacen, Long>{
 
 }

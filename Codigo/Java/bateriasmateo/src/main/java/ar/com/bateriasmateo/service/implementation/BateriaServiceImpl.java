@@ -44,7 +44,7 @@ public class BateriaServiceImpl implements BateriaService{
 		return target;
 	}
 
-	@Override
+	/*@Override
 	public List<Bateria> getByAlmacen(Long pId) {
 		Iterable <Bateria> source = bateriaRepository.findAll();
 		List<Bateria> target = new ArrayList<Bateria>();
@@ -54,6 +54,6 @@ public class BateriaServiceImpl implements BateriaService{
 			}			
 		}
 		return target;
-	}
+	}*/
 
 }
