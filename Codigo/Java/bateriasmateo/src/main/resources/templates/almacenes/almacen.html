@@ -1,4 +1,3 @@
-
 !DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
@@ -9,42 +8,49 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="fragments/page-header"></h1>
 		<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Almacen</h3>
+				<div class="panel-heading" style="height: 40px; ">
+					<h3 class="panel-title col-sm-10" id="nombreAlmacen">Almacen</h3>
+					<h3 class="panel-title col-sm-2" id="capacidadAlmacen">Capacidad</h3>
 				</div>
-				<div class="panel-body">
-		<table class="table table-striped data-tables">
-			<thead>
-				<tr>
-					<th>Bateria Tipo</th>
-					<th>Cantidad</th>
-				</tr>
-			</thead> 
-			<tbody>
-				<tr th:each="bateria : ${almacen.baterias}">
-					<td th:text="${bateria.tipoBateria}"></td>
-					<td th:text="${bateria.cantidad}"></td>
-					<!--				
-					<td>
+		<div class="panel-body">	
+			<input th:field="${almacen.nombre}" type="hidden"  class="form-control" id="nameHidden"></input>
+			<input th:field="${almacen.capacidad}" type="hidden" class="form-control" id="cantHidden"></input>	
+		 	<table class="table table-striped data-tables">
+				<thead>
+					<tr>
+						<th>Bateria Tipo</th>
+						<th>Cantidad</th>
+					</tr>
+				</thead> 
+				<tbody>
+					<tr th:each="bateria : ${almacen.baterias}">
+						<td th:text="${bateria.tipoBateria}"></td>
+						<td th:text="${bateria.cantidad}"></td>
+						<!--				
+						<td>
 							<a class="btn btn-default"	th:href="'/baterias/bateria/edit/' + ${bateria.id}"> 
 							<span title="Modificar" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</a>
-					</td>
-					<td>
+							</a>
+						</td>
+						<td>
 						<a class="btn btn-default" href="#modal_delete" data-toggle="modal" th:attr="data-id='/baterias/bateria/delete/' + ${bateria.id}">
 							<span title="Borrar" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</a>
-					</td>-->
-				</tr>
-			</tbody>
-		</table>
-		<a href="baterias/bateria/new" title="Agregar"  class="btn btn-default" role="button">Nueva Bateria</a>
-	</div>
+						</td>-->
+					</tr>
+				</tbody>
+			</table>
+			<a href="baterias/bateria/new" title="Agregar"  class="btn btn-default" role="button">Nueva Bateria</a>
+		</div>
 	</div>
 	</div>
 	<div th:include="fragments/footer :: scripts"></div>
-	<div
-		th:replace="fragments/deleteConfirmationModal :: deleteConfirmationScripts"></div>
+	<div th:replace="fragments/deleteConfirmationModal :: deleteConfirmationScripts"></div>
+	<script>
+		$('document').ready(function(){
+			$('#nombreAlmacen').text($('#nameHidden').val());
+			$('#capacidadAlmacen').text('Capacidad: '+$('#cantHidden').val());
+		})
+	</script>
 </body>
-</html>
-
+</html>	

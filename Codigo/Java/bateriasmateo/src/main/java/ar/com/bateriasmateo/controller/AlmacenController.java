@@ -22,15 +22,15 @@ public class AlmacenController {
 		super();
 	}
 	
-	@RequestMapping(value="/almacenes", method = RequestMethod.GET)
+	@RequestMapping(value="almacenes", method = RequestMethod.GET)
 	public String almacenList(Model model){
 		model.addAttribute("almacenes", almacenService.getAll());
-		return "/almacenes";
+		return "almacenes";
 	}
-	@RequestMapping(value="/almacenes/almacen/{id}")
+	@RequestMapping(value="almacenes/almacen/{id}")
 	public String almace(Model model, @PathVariable long id){		
 		model.addAttribute("almacen", almacenService.getViewAlmacenDTO(almacenService.getOne(id)));
 		
-		return "/almacenes/almacen";
+		return "almacenes/almacen";
 	}
 }
