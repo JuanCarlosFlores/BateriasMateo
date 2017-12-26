@@ -46,11 +46,6 @@
 	</div>
 	<div th:include="fragments/footer :: scripts"></div>
 	<div th:replace="fragments/deleteConfirmationModal :: deleteConfirmationScripts"></div>
-	<script>
-		$('document').ready(function(){
-			$('#nombreAlmacen').text($('#nameHidden').val());
-			$('#capacidadAlmacen').text('Capacidad: '+$('#cantHidden').val());
-		})
-	</script>
+	<script type="text/javascript" charset="utf8" src="../../scripts/almacenes.js"></script>		
 </body>
 </html>	
