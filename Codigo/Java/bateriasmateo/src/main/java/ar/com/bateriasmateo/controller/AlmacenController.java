@@ -25,7 +25,7 @@ public class AlmacenController {
 	@RequestMapping(value="almacenes", method = RequestMethod.GET)
 	public String almacenList(Model model){
 		model.addAttribute("almacenes", almacenService.getAll());
-		return "almacenes";
+		return "almacenes/almacenes";
 	}
 	@RequestMapping(value="almacenes/almacen/{id}")
 	public String almace(Model model, @PathVariable long id){		

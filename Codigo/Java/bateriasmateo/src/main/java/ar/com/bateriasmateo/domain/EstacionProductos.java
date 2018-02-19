@@ -27,4 +27,6 @@ public abstract class EstacionProductos {
 	@JoinColumn(name="CONSUMIBLE_ID")
 	private Consumible consumible;
 	
+	private String tipo;
+	
 }
