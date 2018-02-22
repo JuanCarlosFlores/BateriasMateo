@@ -17,7 +17,7 @@
 					     <div class="col-sm-6">
 								<div class="form-group">
 									<label for="name">Num Lote:</label>
-									<input th:field="*{numeroLote}"	type="text" class="form-control" id="numeroLote"></input>
+									<input th:field="*{numeroLote}"	type="text" class="form-control" id="numeroLote" th:placeholder="${'BAT-YYYYMMDD-999'}"></input>
 									<p th:if="${#fields.hasErrors('numeroLote')}" class="label label-danger" th:errors="*{numeroLote}"></p>
 								</div>      
 					      </div>		

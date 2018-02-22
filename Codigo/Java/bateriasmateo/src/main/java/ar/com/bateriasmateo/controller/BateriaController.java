@@ -65,7 +65,9 @@ public class BateriaController {
 	public String editBateriaView(Model model, @PathVariable Long id ){
 		Bateria bateria = bateriaService.getOne(id);
 		model.addAttribute("bateria", bateria);
-		model.addAttribute("almacenes", almacenService.getOne(bateria.getAlmacen().getId()));
+		model.addAttribute("almacenes", almacenService.getAll());
+		model.addAttribute("tipos", bateriaTipoService.getOne(bateria.getBateriaTipo().getId()));
+		model.addAttribute("estados", bateriaEstadoService.getAll());
 	return "baterias/bateria/bateria";
 	}
 	@RequestMapping(value="/baterias/bateria/delete/{id}")

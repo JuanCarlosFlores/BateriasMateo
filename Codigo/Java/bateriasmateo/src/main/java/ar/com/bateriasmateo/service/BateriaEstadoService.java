@@ -7,4 +7,6 @@ import ar.com.bateriasmateo.domain.BateriaEstado;
 public interface BateriaEstadoService {
 	public List<BateriaEstado> getAll();
 
+	public BateriaEstado getOne(long bateriaEstadoId);
+
 }

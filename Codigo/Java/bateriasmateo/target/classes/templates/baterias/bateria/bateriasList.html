@@ -19,9 +19,10 @@
 					<th>Numero de Lote</th>
 					<th>Estado</th>
 					<th>Tipo</th>
-					<th>Almacen</th>					
-					<th></th>
-					<th></th>
+					<th>Almacen</th>
+					<th>Fecha Creacion</th>					
+					<th>Editar</th>
+					<th>Borrar</th>
 				</tr>
 			</thead> 
 			<tbody>
@@ -29,7 +30,8 @@
 					<td th:text="${bateria.numeroLote}"></td>
 					<td th:text="${bateria.bateriaEstado.nombre}"></td>
 					<td th:text="${bateria.bateriaTipo.nombre}"></td>
-					<td th:text="${bateria.almacen.nombre}"></td>					
+					<td th:text="${bateria.almacen.nombre}"></td>
+					<td th:text="${bateria.fechaCreacion}"></td>						
 					<td>
 						<a class="btn btn-default"	th:href="'/baterias/bateria/edit/' + ${bateria.id}"> 
 							<span title="Modificar" class="glyphicon glyphicon-edit" aria-hidden="true"></span>

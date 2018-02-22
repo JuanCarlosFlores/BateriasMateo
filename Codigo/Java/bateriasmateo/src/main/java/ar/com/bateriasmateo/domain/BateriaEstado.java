@@ -16,6 +16,7 @@ public class BateriaEstado {
 	private long bateriaEstadoId;
 	private String nombre;
 	private String descripcion;
+	
 	public long getBateriaEstadoId() {
 		return bateriaEstadoId;
 	}

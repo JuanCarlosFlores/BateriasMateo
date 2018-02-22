@@ -22,5 +22,9 @@ public class BateriaEstadoServiceImpl implements BateriaEstadoService {
 		source.forEach(target::add);
 		return target;
 	}
+	@Override
+	public BateriaEstado getOne(long bateriaEstadoId){
+		return bateriaEstadoRepository.findOne(bateriaEstadoId);
+	}
 
 }
