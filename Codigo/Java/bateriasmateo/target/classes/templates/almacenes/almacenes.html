@@ -19,15 +19,18 @@
 					<th>Nombre</th>
 					<th>Descripcion</th>
 					<th>Capacidad</th>					
-					<th>Existencias</th>					
+					<th>Existencias</th>
+					<th>Editar</th>
+					<th>Borrar</th>					
 				</tr>
 			</thead> 
 			<tbody>
 				<tr th:each="almacen : ${almacenes}">
-					<td th:text="${almacen.id}"></td>
 					<td th:text="${almacen.nombre}"></td>
-					<td th:text="${almacen.capacidad}"></td>
-					<td th:text="${almacen.descripcion}"></td>					
+					<td th:text="${almacen.descripcion}"></td>	
+					<td th:text="${almacen.capacidad}"></td>	
+					<td th:text="${#lists.size(almacen.baterias)}"></td>
+					
 					<td>
 						<a class="btn btn-default"	th:href="'/almacenes/almacen/' + ${almacen.id}"> 
 							<span title="Modificar" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
