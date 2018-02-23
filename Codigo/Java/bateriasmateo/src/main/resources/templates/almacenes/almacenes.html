@@ -19,28 +19,20 @@
 					<th>Nombre</th>
 					<th>Descripcion</th>
 					<th>Capacidad</th>					
-					<th>Existencias</th>
-					<th>Editar</th>
-					<th>Borrar</th>					
+					<th>Existencia</th>			
 				</tr>
 			</thead> 
 			<tbody>
 				<tr th:each="almacen : ${almacenes}">
-					<td th:text="${almacen.nombre}"></td>
+					<td th:text="${almacen.nombre}"></td>		
 					<td th:text="${almacen.descripcion}"></td>	
 					<td th:text="${almacen.capacidad}"></td>	
 					<td th:text="${#lists.size(almacen.baterias)}"></td>
-					
-					<td>
+				    <td>
 						<a class="btn btn-default"	th:href="'/almacenes/almacen/' + ${almacen.id}"> 
-							<span title="Modificar" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							<span title="Ver detalle" class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 						</a>
-					</td>
-					<td>
-						<a class="btn btn-default" href="#modal_delete" data-toggle="modal" th:attr="data-id='/baterias/bateria/delete/' + ${almacen.id}">
-							<span title="Borrar" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						</a>
-					</td>
+					</td>							
 				</tr>
 			</tbody>
 		</table>

@@ -7,6 +7,7 @@ public class AlmacenDTO {
 	private String descripcion;
 	private int capacidad;
 	private ArrayList<BateriaAlmacenDTO> baterias;
+
 	public String getNombre() {
 		return nombre;
 	}

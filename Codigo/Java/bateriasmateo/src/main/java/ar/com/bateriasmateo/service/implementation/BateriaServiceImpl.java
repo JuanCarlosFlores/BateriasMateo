@@ -43,17 +43,17 @@ public class BateriaServiceImpl implements BateriaService{
 		source.forEach(target::add);
 		return target;
 	}
-
-	/*@Override
-	public List<Bateria> getByAlmacen(Long pId) {
+/*
+	@Override
+	public List<Bateria> getByAlmacen(Long pAlmacenId) {
 		Iterable <Bateria> source = bateriaRepository.findAll();
 		List<Bateria> target = new ArrayList<Bateria>();
 		for (Bateria bateria:source){
-			if(bateria.getAlmacen().getId()==pId){
+			if(bateria.getAlmacen().getId()==pAlmacenId){
 				target.add(bateria);
 			}			
 		}
 		return target;
-	}*/
-
+	}
+*/
 }
