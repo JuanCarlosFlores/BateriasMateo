@@ -20,23 +20,19 @@
 					<tr>
 						<th>Bateria Tipo</th>
 						<th>Cantidad</th>
+						<th>Ver Baterias</th>
 					</tr>
 				</thead> 
 				<tbody>
 					<tr th:each="bateria : ${almacen.baterias}">
 						<td th:text="${bateria.tipoBateria}"></td>
-						<td th:text="${bateria.cantidad}"></td>
-						<!--				
+						<td th:text="${bateria.cantidad}"></td>		
+						 <!-- 			
 						<td>
-							<a class="btn btn-default"	th:href="'/baterias/bateria/edit/' + ${bateria.id}"> 
-							<span title="Modificar" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</a>
-						</td>
-						<td>
-						<a class="btn btn-default" href="#modal_delete" data-toggle="modal" th:attr="data-id='/baterias/bateria/delete/' + ${bateria.id}">
-							<span title="Borrar" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						<a class="btn btn-default"	th:href="'baterias/bateria/view/almacen/' + ${almacen.id}"> 
+							<span title="Ver detalle" class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 						</a>
-						</td>-->
+					   </td>	 -->					
 					</tr>
 				</tbody>
 			</table>
