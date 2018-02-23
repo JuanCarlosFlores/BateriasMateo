@@ -59,9 +59,11 @@ public class AlmacenServiceImpl implements AlmacenService{
 	@Override
 	public AlmacenDTO getViewAlmacenDTO(Almacen almacen) {		
 		AlmacenDTO almacenView = new AlmacenDTO();
+		almacenView.setId(almacen.getId());
 		almacenView.setNombre(almacen.getNombre());
 		almacenView.setDescripcion(almacen.getDescripcion());
 		almacenView.setCapacidad(almacen.getCapacidad());
+		almacenView.setCantidad(almacen.getBaterias().size());
 		Iterable<BateriaTipo> tipos = bateriaTipoRepository.findAll();
 		Iterable<Bateria> baterias = almacen.getBaterias();
 		ArrayList<BateriaAlmacenDTO> bateriasView =new ArrayList<BateriaAlmacenDTO>();
@@ -79,6 +81,7 @@ public class AlmacenServiceImpl implements AlmacenService{
 				bateriasView.add(bateriaView);
 			}
 		}
+		
 		almacenView.setBaterias(bateriasView);
 		
 	

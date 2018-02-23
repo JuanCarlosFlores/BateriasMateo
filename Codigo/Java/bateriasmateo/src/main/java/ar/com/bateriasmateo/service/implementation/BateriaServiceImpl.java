@@ -43,7 +43,7 @@ public class BateriaServiceImpl implements BateriaService{
 		source.forEach(target::add);
 		return target;
 	}
-/*
+
 	@Override
 	public List<Bateria> getByAlmacen(Long pAlmacenId) {
 		Iterable <Bateria> source = bateriaRepository.findAll();
@@ -55,5 +55,5 @@ public class BateriaServiceImpl implements BateriaService{
 		}
 		return target;
 	}
-*/
+
 }

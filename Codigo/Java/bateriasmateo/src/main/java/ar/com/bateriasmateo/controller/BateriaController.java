@@ -44,13 +44,13 @@ public class BateriaController {
 		return "baterias/bateria/bateria";
 	}
 	
-	/*
-	@RequestMapping(value ="baterias/bateria/view/almacen/{id}")	
+	
+	@RequestMapping(value ="baterias/bateria/view/almacen{id}")	
 	public String bateriasByAlmacen(Model model, @PathVariable Long AlmacenId){
 		model.addAttribute("bateria", bateriaService.getByAlmacen(AlmacenId));
 		return "baterias/bateria/bateriasList";
 	}	
-	*/
+	
 	
 	@RequestMapping(value="baterias/bateria/new")
 	public String nuevaBateria(Model model){

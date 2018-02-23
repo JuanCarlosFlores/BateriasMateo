@@ -9,30 +9,32 @@
 		<h1 class="fragments/page-header"></h1>
 		<div class="panel panel-primary">
 				<div class="panel-heading" style="height: 40px; ">
-					<h3 class="panel-title col-sm-10" id="nombreAlmacen">Almacen</h3>
-					<h3 class="panel-title col-sm-2" id="capacidadAlmacen">Capacidad</h3>
+					<h3 class="panel-title col-sm-4" id="nombreAlmacen">Almacen</h3>
+					<h3 class="panel-title col-sm-4" id="cantidadAlmacen">Cantidad Actual</h3>
+					<h3 class="panel-title col-sm-4" id="capacidadAlmacen">Capacidad</h3>					
 				</div>
 		<div class="panel-body">	
-			<input th:field="${almacen.nombre}" type="hidden"  class="form-control" id="nameHidden"></input>
+			<input th:field="${almacen.nombre}" type="hidden" class="form-control" id="nameHidden"></input>
 			<input th:field="${almacen.capacidad}" type="hidden" class="form-control" id="cantHidden"></input>	
+			<input th:field="${almacen.cantidad}" type="hidden" class="form-control" id="countHidden"></input>	 
 		 	<table class="table table-striped data-tables">
 				<thead>
 					<tr>
 						<th>Bateria Tipo</th>
 						<th>Cantidad</th>
 						<th>Ver Baterias</th>
+						
 					</tr>
 				</thead> 
 				<tbody>
 					<tr th:each="bateria : ${almacen.baterias}">
 						<td th:text="${bateria.tipoBateria}"></td>
-						<td th:text="${bateria.cantidad}"></td>		
-						 <!-- 			
+						<td th:text="${bateria.cantidad}"></td>
 						<td>
-						<a class="btn btn-default"	th:href="'baterias/bateria/view/almacen/' + ${almacen.id}"> 
+						<a class="btn btn-default"	href="#modal_edit" data-toggle="modal" th:attr="data-id='baterias/bateria/view/almacen/' + ${almacen.id}"> 
 							<span title="Ver detalle" class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 						</a>
-					   </td>	 -->					
+					   </td>								
 					</tr>
 				</tbody>
 			</table>
