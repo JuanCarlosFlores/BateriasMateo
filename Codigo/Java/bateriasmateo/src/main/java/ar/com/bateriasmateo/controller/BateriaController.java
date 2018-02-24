@@ -45,9 +45,9 @@ public class BateriaController {
 	}
 	
 	
-	@RequestMapping(value ="baterias/bateria/view/almacen{id}")	
-	public String bateriasByAlmacen(Model model, @PathVariable Long AlmacenId){
-		model.addAttribute("bateria", bateriaService.getByAlmacen(AlmacenId));
+	@RequestMapping(value ="baterias/bateria/view/almacen={almacenId}")	
+	public String bateriasByAlmacen(Model model, @PathVariable Long almacenId){
+		model.addAttribute("baterias", bateriaService.getByAlmacen(almacenId));
 		return "baterias/bateria/bateriasList";
 	}	
 	

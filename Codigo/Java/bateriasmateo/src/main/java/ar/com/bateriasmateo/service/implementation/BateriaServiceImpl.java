@@ -48,9 +48,9 @@ public class BateriaServiceImpl implements BateriaService{
 	public List<Bateria> getByAlmacen(Long pAlmacenId) {
 		Iterable <Bateria> source = bateriaRepository.findAll();
 		List<Bateria> target = new ArrayList<Bateria>();
-		for (Bateria bateria:source){
+		for (Bateria bateria : source){
 			if(bateria.getAlmacen().getId()==pAlmacenId){
-				target.add(bateria);
+				target.add(bateria);				
 			}			
 		}
 		return target;

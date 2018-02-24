@@ -29,16 +29,18 @@
 				<tbody>
 					<tr th:each="bateria : ${almacen.baterias}">
 						<td th:text="${bateria.tipoBateria}"></td>
-						<td th:text="${bateria.cantidad}"></td>
+						<td th:text="${bateria.cantidad}"></td>	
 						<td>
-						<a class="btn btn-default"	href="#modal_edit" data-toggle="modal" th:attr="data-id='baterias/bateria/view/almacen/' + ${almacen.id}"> 
+						<a class="btn btn-default"  th:with="baseUrl='/'" th:href="'/baterias/bateria/view/almacen=' + ${almacen.id}"> 
 							<span title="Ver detalle" class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 						</a>
-					   </td>								
+					</td>																	
 					</tr>
 				</tbody>
 			</table>
-			<a href="baterias/bateria/new" title="Agregar"  class="btn btn-default" role="button">Nueva Bateria</a>
+		<!-- 			
+		<a href="baterias/bateria/new" title="Agregar"  class="btn btn-default" role="button">Nueva Bateria</a> 
+		-->
 		</div>
 	</div>
 	</div>
