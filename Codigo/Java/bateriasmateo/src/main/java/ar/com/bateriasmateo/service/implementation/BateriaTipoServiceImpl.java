@@ -47,4 +47,10 @@ public class BateriaTipoServiceImpl implements BateriaTipoService{
 		return target;
 	}
 
+	@Override
+	public BateriaTipo getByNombre(String pNombre) {
+		
+		return bateriaTipoRepository.findByNombre(pNombre);
+	}
+
 }

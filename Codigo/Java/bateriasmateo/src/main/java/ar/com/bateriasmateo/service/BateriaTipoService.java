@@ -11,4 +11,5 @@ public interface BateriaTipoService {
 	public void delete(BateriaTipo pBateriaTipo);
 	public BateriaTipo getOne(Long pId);
 	public List<BateriaTipo> getAll();
+	public BateriaTipo getByNombre(String pNombre);
 }

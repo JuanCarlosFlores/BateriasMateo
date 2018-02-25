@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.com.bateriasmateo.domain.Almacen;
 import ar.com.bateriasmateo.domain.Bateria;
+import ar.com.bateriasmateo.domain.BateriaTipo;
 import ar.com.bateriasmateo.repository.BateriaRepository;
 import ar.com.bateriasmateo.service.BateriaService;
 
@@ -45,15 +47,22 @@ public class BateriaServiceImpl implements BateriaService{
 	}
 
 	@Override
-	public List<Bateria> getByAlmacen(Long pAlmacenId) {
-		Iterable <Bateria> source = bateriaRepository.findAll();
+	public List<Bateria> getByAlmacen(Almacen pAlmacen) {
+	/*	Iterable <Bateria> source = bateriaRepository.findAll();
 		List<Bateria> target = new ArrayList<Bateria>();
 		for (Bateria bateria : source){
 			if(bateria.getAlmacen().getId()==pAlmacenId){
 				target.add(bateria);				
 			}			
 		}
-		return target;
+		return target;*/
+		return bateriaRepository.findByAlmacen(pAlmacen);
+	}
+
+	@Override
+	public List<Bateria> getByAlmacenAndBateriaTipo(Almacen almacen, BateriaTipo pBateriaTipo) {
+
+		return bateriaRepository.findByAlmacenAndBateriaTipo(almacen,pBateriaTipo);
 	}
 
 }

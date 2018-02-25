@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import ar.com.bateriasmateo.domain.Almacen;
 import ar.com.bateriasmateo.domain.Bateria;
+import ar.com.bateriasmateo.domain.BateriaTipo;
 import ar.com.bateriasmateo.service.AlmacenService;
 import ar.com.bateriasmateo.service.BateriaEstadoService;
 import ar.com.bateriasmateo.service.BateriaService;
@@ -45,9 +47,11 @@ public class BateriaController {
 	}
 	
 	
-	@RequestMapping(value ="baterias/bateria/view/almacen={almacenId}")	
-	public String bateriasByAlmacen(Model model, @PathVariable Long almacenId){
-		model.addAttribute("baterias", bateriaService.getByAlmacen(almacenId));
+	@RequestMapping(value ="baterias/bateria/view/almacen={almacenId}/tipo={tipoName}")	
+	public String bateriasByAlmacenAndTipo(Model model, @PathVariable Long almacenId, @PathVariable String tipoName){
+		BateriaTipo tipoBateria = bateriaTipoService.getByNombre(tipoName);
+		Almacen almacen = almacenService.getOne(almacenId);
+		model.addAttribute("baterias", bateriaService.getByAlmacenAndBateriaTipo(almacen,tipoBateria));
 		return "baterias/bateria/bateriasList";
 	}	
 	
