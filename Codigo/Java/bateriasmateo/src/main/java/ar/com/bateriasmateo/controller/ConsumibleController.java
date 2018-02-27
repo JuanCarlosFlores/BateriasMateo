@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ar.com.bateriasmateo.service.ProductoIntermedioService;
-import ar.com.bateriasmateo.domain.Bateria;
 import ar.com.bateriasmateo.domain.Consumible;
 import ar.com.bateriasmateo.domain.Insumo;
+import ar.com.bateriasmateo.domain.MateriaPrima;
+import ar.com.bateriasmateo.domain.ProductoIntermedio;
+import ar.com.bateriasmateo.dto.ConsumibleDTO;
+import ar.com.bateriasmateo.service.ConsumibleService;
 import ar.com.bateriasmateo.service.InsumoService;
 import ar.com.bateriasmateo.service.MateriaPrimaService;
+
 
 @Controller
 public class ConsumibleController {
@@ -33,6 +37,8 @@ public class ConsumibleController {
 	@Autowired
 	ProductoIntermedioService productoIntermedioService;
 	
+	@Autowired
+	ConsumibleService consumibleService;
 	
 	public ConsumibleController(){
 		super();
@@ -40,13 +46,7 @@ public class ConsumibleController {
 	
 	@RequestMapping(value="/consumibles", method = RequestMethod.GET)
 	public String consumiblesList(Model model){
-		
-		List<Consumible> target = new ArrayList<Consumible>();	
-		
-		target.addAll(insumoService.getAll());
-		target.addAll(productoIntermedioService.getAll());
-		target.addAll(materiaPrimaService.getAll());
-		model.addAttribute("consumibles", target);		
+		model.addAttribute("consumibles", consumibleService.getAll());		
 		return "consumibles/consumibles";
 	}
 	
@@ -70,33 +70,24 @@ public class ConsumibleController {
 	
 	
 	@RequestMapping(value="/consumibles/consumir/{id}")
-	public String editConsumibleView(Model model, @PathVariable Long id ){
-		Consumible consumible = null;
-		if(materiaPrimaService.getOne(id) == null){
-			if(insumoService.getOne(id) == null){
-				if(productoIntermedioService.getOne(id) != null){
-					consumible = productoIntermedioService.getOne(id);					
-				}				
-			}else{
-				consumible = insumoService.getOne(id);
-			}		
-		}
-		else{
-			consumible = materiaPrimaService.getOne(id);
-	    };
-				
-		model.addAttribute("consumible", consumible);
+	public String editConsumibleView(Model model, @PathVariable Long id) {
+		model.addAttribute("consumible", consumibleService.getViewConsumibleDTO(id));
 		return "consumibles/consumir";
 	}
 	
 	@RequestMapping(value = "/consumibles/consumir", method = RequestMethod.POST )
-	public String editConsumible(@Valid @ModelAttribute("consumible") Consumible consumible, BindingResult bindingResult, Model model){
+	public String editConsumible(@Valid @ModelAttribute("consumible") ConsumibleDTO consumible, BindingResult bindingResult, Model model){
 		if((bindingResult.hasErrors())){
 			model.addAttribute("consumible", consumible);
 			return "redirect:/consumibles";
 		}
-		else{}
-		return "baterias/bateria/newBateriaOK";
+		else{
+			consumibleService.consumir(consumible);			
+		}
+		return "consumibles/consumibleModificado";
 	}
+	
+	
+	
 	
 }
