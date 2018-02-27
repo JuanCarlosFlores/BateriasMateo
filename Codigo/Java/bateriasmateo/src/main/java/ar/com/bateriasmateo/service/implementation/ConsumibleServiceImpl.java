@@ -53,47 +53,46 @@ public class ConsumibleServiceImpl implements ConsumibleService{
 	public ConsumibleDTO getViewConsumibleDTO(Long pId) {		
 		
 	ConsumibleDTO consumibleDTO = new ConsumibleDTO();
-	
-	if(MateriaPrimaRepository.findOne(pId) == null){
-			if(InsumoRepository.findOne(pId) == null){
-					 consumibleDTO.setId(ProductoIntermedioRepository.findOne(pId).getId());
-					 consumibleDTO.setCantidad(ProductoIntermedioRepository.findOne(pId).getCantidad());
-					 consumibleDTO.setNombre(ProductoIntermedioRepository.findOne(pId).getNombre());
-					 consumibleDTO.setMinimo(ProductoIntermedioRepository.findOne(pId).getMinimo());
-					 return consumibleDTO;
-			}else{
-				consumibleDTO.setId(InsumoRepository.findOne(pId).getId());
-				consumibleDTO.setCantidad(InsumoRepository.findOne(pId).getCantidad());
-				consumibleDTO.setNombre(InsumoRepository.findOne(pId).getNombre());
-				consumibleDTO.setMinimo(InsumoRepository.findOne(pId).getMinimo());
-				return consumibleDTO;
-			}		
-		}
+	if(MateriaPrimaRepository.findOne(pId) != null){
 		consumibleDTO.setId(MateriaPrimaRepository.findOne(pId).getId());
-		consumibleDTO.setCantidad(MateriaPrimaRepository.findOne(pId).getCantidad());
 		consumibleDTO.setNombre(MateriaPrimaRepository.findOne(pId).getNombre());
 		consumibleDTO.setMinimo(MateriaPrimaRepository.findOne(pId).getMinimo());
+		consumibleDTO.setCantidad(MateriaPrimaRepository.findOne(pId).getCantidad());		
 		return consumibleDTO;
+	}
+	if(InsumoRepository.findOne(pId) != null){
+		consumibleDTO.setId(InsumoRepository.findOne(pId).getId());
+		consumibleDTO.setNombre(InsumoRepository.findOne(pId).getNombre());
+		consumibleDTO.setMinimo(InsumoRepository.findOne(pId).getMinimo());
+		consumibleDTO.setCantidad(InsumoRepository.findOne(pId).getCantidad());		
+		return consumibleDTO;		
+	}
+	
+	consumibleDTO.setId(ProductoIntermedioRepository.findOne(pId).getId());
+	consumibleDTO.setNombre(ProductoIntermedioRepository.findOne(pId).getNombre());
+	consumibleDTO.setMinimo(ProductoIntermedioRepository.findOne(pId).getMinimo());
+	consumibleDTO.setCantidad(ProductoIntermedioRepository.findOne(pId).getCantidad());
+	return consumibleDTO;	
+	
 	}
 	
 	@Override
 	public Consumible consumir(ConsumibleDTO pConsumibleDTO) {
-
-		if(MateriaPrimaRepository.findOne(pConsumibleDTO.getId()) == null){
-			if(InsumoRepository.findOne(pConsumibleDTO.getId()) == null){			
-					ProductoIntermedio target = ProductoIntermedioRepository.findOne(pConsumibleDTO.getId());	
-				    target.setCantidad(target.getCantidad() - pConsumibleDTO.getCantidadMod());
-				    return ProductoIntermedioRepository.save(target);						
-			}else{
-				Insumo target = InsumoRepository.findOne(pConsumibleDTO.getId());
-				target.setCantidad(target.getCantidad() - pConsumibleDTO.getCantidadMod());
-				return InsumoRepository.save(target);
-			}		
-		}		
-		MateriaPrima target = MateriaPrimaRepository.findOne(pConsumibleDTO.getId());
+		if(MateriaPrimaRepository.findOne(pConsumibleDTO.getId()) != null){
+			MateriaPrima target = MateriaPrimaRepository.findOne(pConsumibleDTO.getId());
+		    target.setCantidad(target.getCantidad() - pConsumibleDTO.getCantidadMod());
+		    return MateriaPrimaRepository.save(target);
+		}
+		
+		if(InsumoRepository.findOne(pConsumibleDTO.getId()) != null){
+			Insumo target = InsumoRepository.findOne(pConsumibleDTO.getId());
+		    target.setCantidad(target.getCantidad() - pConsumibleDTO.getCantidadMod());
+		    return InsumoRepository.save(target);
+		}
+		
+		ProductoIntermedio target = ProductoIntermedioRepository.findOne(pConsumibleDTO.getId());	
 	    target.setCantidad(target.getCantidad() - pConsumibleDTO.getCantidadMod());
-	    return MateriaPrimaRepository.save(target);
-	  	  			
+	    return ProductoIntermedioRepository.save(target);	
 		
 	}
 	
