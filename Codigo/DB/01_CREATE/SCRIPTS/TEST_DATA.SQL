@@ -5,4 +5,4 @@ INSERT INTO `bateriasmateo`.`consumible` (`tipo`, `id`, `cantidad`, `detalle`, `
 VALUES ('MP', '2', '100000', 'Plomo natural (En Kg)', '6000', 'PLOMO');
 
 INSERT INTO `bateriasmateo`.`consumible` (`tipo`, `id`, `cantidad`, `detalle`, `minimo`, `nombre`) 
-VALUES ('PI', '3', '2000', 'Rejillas de Plomo (En unidades)', '10000', 'REJILLAS PLOMO');
+VALUES ('PI', '3', '10000', 'Rejillas de Plomo (En unidades)', '2000', 'REJILLAS PLOMO');

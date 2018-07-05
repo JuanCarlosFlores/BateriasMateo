@@ -1,6 +1,6 @@
 package com.bateriasMateo.web;
 
-import static org.mockito.Matchers.isNull;
+
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bateriasMateo.domain.Bateria;
-import com.bateriasMateo.domain.Insumo;
+
 import com.bateriasMateo.service.BateriaService;
-import com.bateriasMateo.service.InsumoService;
+
 
 @RestController
 public class ResultRest {
